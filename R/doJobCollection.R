@@ -96,11 +96,11 @@ doJobCollection.JobCollection = function(jc, output = NULL) {
   if (hasName(jc$resources, "pm.backend")) {
     if (!requireNamespace("parallelMap", quietly = TRUE))
       return(error("parallelMap not installed"))
-    pm.opts = filterNull(insert(list(mode = jc$resources$pm.backend, cpus = jc$resources$ncpus, show.info = FALSE), jc$resources$pm.opts))
-    do.call(parallelMap::parallelStart, pm.opts)
-    on.exit(parallelMap::parallelStop(), add = TRUE)
-    pm.opts = parallelMap::parallelGetOptions()$settings
-    catf("### [bt%s]: Using %i CPUs for parallelMap/%s on level '%s'", s, pm.opts$cpus, pm.opts$mode, if (is.na(pm.opts$level)) "default" else pm.opts$level)
+    # pm.opts = filterNull(insert(list(mode = jc$resources$pm.backend, cpus = jc$resources$ncpus, show.info = FALSE), jc$resources$pm.opts))
+    # do.call(parallelMap::parallelStart, pm.opts)
+    # on.exit(parallelMap::parallelStop(), add = TRUE)
+    # pm.opts = parallelMap::parallelGetOptions()$settings
+    # catf("### [bt%s]: Using %i CPUs for parallelMap/%s on level '%s'", s, pm.opts$cpus, pm.opts$mode, if (is.na(pm.opts$level)) "default" else pm.opts$level)
   }
 
   # setup inner parallelization with foreach
